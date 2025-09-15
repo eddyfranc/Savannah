@@ -156,7 +156,9 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Use email as username? (optional)
-# OIDC_CREATE_USER = True  # default True; mozilla-django-oidc will create Django users from OIDC
+# OIDC_CREATE_USER = True,  
+#default True;
+#mozilla-django-oidc will create Django users from OIDC
 
 AUTHENTICATION_BACKENDS = (
     "myapp.oidc.MyOIDCBackend",                   # OIDC backend
