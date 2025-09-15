@@ -1,6 +1,5 @@
 # Use official Python image
 FROM python:3.11-slim
-EXPOSE 8000
 
 # Set environment vars
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -10,7 +9,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Install dependencies
-COPY requirements.txt /myapp/
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project
