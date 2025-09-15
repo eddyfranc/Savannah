@@ -1,5 +1,3 @@
-
-
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
@@ -29,4 +27,4 @@ def signup_view(request):
             return redirect("/")  # or wherever
     else:
         form = SignupForm()
-    return render(request, "core/signup.html", {"form": form})
+    return render(request, "myapp/signup.html", {"form": form})

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from mozilla_django_oidc import views as oidc_views
-from core import views as core_views
+from myapp import views as core_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -17,5 +17,8 @@ urlpatterns = [
     path("accounts/signup/", core_views.signup_view, name="signup"),
 
     # Simple API example
-    path("api/", include("core.api_urls")),  # create this file below
+    path("api/", include("myapp.api_urls")),  # create this file below
+
+    # core/api_urls.py
+
 ]

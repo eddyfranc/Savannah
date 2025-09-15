@@ -1,4 +1,3 @@
-# core/oidc.py
 from mozilla_django_oidc.auth import OIDCAuthenticationBackend
 from .models import Customer
 

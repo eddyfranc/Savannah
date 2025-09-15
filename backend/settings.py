@@ -131,7 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Use custom user model (if you created Customer in core.models)
-AUTH_USER_MODEL = "core.Customer"
+AUTH_USER_MODEL = "myapp.Customer"
 
 # DRF: require auth by default; allow session auth (OIDC login creates session)
 REST_FRAMEWORK = {
@@ -159,6 +159,6 @@ LOGOUT_REDIRECT_URL = "/"
 # OIDC_CREATE_USER = True  # default True; mozilla-django-oidc will create Django users from OIDC
 
 AUTHENTICATION_BACKENDS = (
-    "core.oidc.MyOIDCBackend",                   # OIDC backend
+    "myapp.oidc.MyOIDCBackend",                   # OIDC backend
     "django.contrib.auth.backends.ModelBackend", # fallback for local accounts
 )
