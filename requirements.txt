@@ -5,5 +5,3 @@ psycopg2-binary==2.9.10
 sqlparse==0.5.3
 tzdata==2025.2
 mozilla-django-oidc
-
-mozilla-django-oidc
