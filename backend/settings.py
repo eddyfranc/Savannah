@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+    'rest_framework',
+    'mozilla_django_oidc',
+    'myapp',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,3 +128,37 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Use custom user model (if you created Customer in core.models)
+AUTH_USER_MODEL = "core.Customer"
+
+# DRF: require auth by default; allow session auth (OIDC login creates session)
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",
+    ),
+}
+
+# OIDC settings (replace these with your provider's endpoints and client credentials)
+OIDC_RP_CLIENT_ID = "<YOUR_CLIENT_ID>"
+OIDC_RP_CLIENT_SECRET = "<YOUR_CLIENT_SECRET>"
+
+# The OIDC provider's well-known config URL (issuer)
+OIDC_OP_DISCOVERY_ENDPOINT = "https://<your-oidc-domain>/.well-known/openid-configuration"
+
+# Redirect URI Django will use (must be registered in provider)
+# e.g., http://localhost:8000/oidc/callback/
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+# Use email as username? (optional)
+# OIDC_CREATE_USER = True  # default True; mozilla-django-oidc will create Django users from OIDC
+
+AUTHENTICATION_BACKENDS = (
+    "core.oidc.MyOIDCBackend",                   # OIDC backend
+    "django.contrib.auth.backends.ModelBackend", # fallback for local accounts
+)

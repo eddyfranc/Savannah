@@ -1,0 +1,13 @@
+<!-- core/templates/core/signup.html -->
+<!doctype html>
+<html>
+  <body>
+    <h1>Sign up</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Sign up</button>
+    </form>
+    <p>Or <a href="{% url 'oidc_auth_request' %}">Sign in with OIDC</a></p>
+  </body>
+</html>
