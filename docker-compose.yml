@@ -9,6 +9,16 @@ services:
       - .:/app
     depends_on:
       - db
+  
+  services:
+  web:
+    build: .
+    environment:
+      - AFRICASTALKING_USERNAME=sandbox
+      - AFRICASTALKING_API_KEY=<YOUR_SANDBOX_API_KEY>
+      - ADMIN_EMAIL=admin@example.com
+      - DJANGO_EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
+
 
   db:
     image: postgres:15
